@@ -19,22 +19,21 @@ namespace CsharpAPI.Controllers
         }
 
         [HttpGet("GetAll")]
-        public ActionResult<List<Character>> Get()
+        public async Task<ActionResult<List<Character>>> Get()
         {
-            return Ok(this.CharacterService.GetAllCharacters());
+            return Ok(await this.CharacterService.GetAllCharacters());
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Character> GetSingle(int id)
+        public async Task<ActionResult<Character>> GetSingle(int id)
         {
-            return Ok(this.CharacterService.GetCharacterById(id));
+            return Ok(await this.CharacterService.GetCharacterById(id));
         }
 
         [HttpPost]
-        public ActionResult<List<Character>> AddCharacter(Character newCharacter)
+        public async Task<ActionResult<List<Character>>> AddCharacter(Character newCharacter)
         {
-
-            return Ok(this.CharacterService.AddCharacter(newCharacter));
+            return Ok(await this.CharacterService.AddCharacter(newCharacter));
         }
     }
 }
